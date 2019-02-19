@@ -1,0 +1,2 @@
+class Mamo < ApplicationRecord
+end
