@@ -1,6 +1,6 @@
 class CreateMamos < ActiveRecord::Migration[5.2]
   def change
-    create_table :mamos do |t|
+    create_table :memos do |t|
       t.string :name
       t.text :description
 
