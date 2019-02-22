@@ -3,4 +3,4 @@ h1 Sign up
 .nav.justify-content-end
   =link_to '一覧', memos_path, class: 'nav-link'
 
-render partial: 'form', locals: { memo: @memo }
+= render partial: 'form', locals: { memo: @memo }

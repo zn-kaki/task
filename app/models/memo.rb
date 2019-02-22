@@ -4,7 +4,7 @@ class Memo < ApplicationRecord
 
   belongs_to :user
 
-  scope :recent, -> { order (created_at: :desc ) }
+  scope :recent, -> { order(created_at: :desc) }
 
   private
 

@@ -26,12 +26,12 @@ class MemosController < ApplicationController
 
   def update
     @memo.update!(memo_params)
-    redirect_to memos_url, notice: "メモ#{memo.name}を更新しました。"
+    redirect_to memos_url, notice: "メモ#{@memo.name}を更新しました。"
   end
 
   def destroy
    @memo.destroy
-    redirect_to memos_url, notice: "メモ#{memo.name}を削除しました。"
+    redirect_to memos_url, notice: "メモ#{@memo.name}を削除しました。"
   end
 
   private
@@ -42,4 +42,5 @@ class MemosController < ApplicationController
 
   def set_memo
     @memo = current_user.memos.find(params[:id])
+  end
 end
