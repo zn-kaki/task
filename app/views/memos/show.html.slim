@@ -1,2 +1,26 @@
-h1 Memos#show
-p Find me in app/views/memos/show.html.slim
+h1 タスクの詳細
+
+.nav.justfy-content-end
+  =link_to '一覧', memos_path, class: 'nav-link'
+table.table.table-hover
+  tbody
+    tr
+      th= Memo.human_attribute_name(:id)
+      td= @memo.id
+    tr
+      th= Memo.human_attribute_name(:name)
+      td= @memo.name
+    tr
+      th= Memo.human_attribute_name(:description)
+      td= simple_format(h(@memo.description), {}, sanitize: false, wrapper_tag: "div")
+    tr
+      th= Memo.human_attribute_name(:created_at)
+      td= @memo.created_at
+    tr
+      th= Memo.human_attribute_name(:updated_at)
+      td= @memo.updated_at
+
+= link_to '編集', edit_memo_path, class: 'btn btn-primary mr-3'
+= link_to '削除', @memo, method: :delete, data: { confirm: "メモ「#{@memo.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
+
+

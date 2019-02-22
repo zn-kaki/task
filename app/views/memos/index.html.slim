@@ -1,3 +1,19 @@
 h1 List display
 
 = link_to '新規登録', new_memo_path, class: 'btn btn-primary'
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th= Memo.human_attribute_name(:name)
+      th= Memo.human_attribute_name(:created_at)
+      th
+    tbody
+      - @memos.each do |memo|
+        tr
+          td= link_to memo.name, memo_path(memo)
+          td= memo.created_at
+          td
+            = link_to '編集', edit_memo_path(memo), class: 'btn btn-primary mr-3'
+            = link_to '削除', memo, method: :delete, data: { confirm: "メモ「#{memo.name}」を削除します。よろしいですか？"}, class: 'btn btn-danger'
