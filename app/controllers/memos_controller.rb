@@ -5,8 +5,9 @@ class MemosController < ApplicationController
 
   def create
     @memo = Memo.new(memo_params)
+
     if @memo.save
-      redirect_to @memo, notice: "メモ「#{memo.name}」を登録しました。"
+      redirect_to @memo, notice: "メモ「#{@memo.name}」を登録しました。"
     else
       render :new
     end
