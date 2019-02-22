@@ -1,2 +1,0 @@
-class Mamo < ApplicationRecord
-end
