@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'メモ管理機能', type: :system do
-  describe '一覧表示機能' do
     let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com')}
     let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com')}
     let!(:memo_a) { FactoryBot.create(:memo, name: '最初のメモ', user: user_a) }
@@ -19,6 +18,7 @@ describe 'メモ管理機能', type: :system do
       click_button 'ログインする'
     end
 
+  describe '一覧表示機能' do
     context 'ユーザーAがログインしているとき' do
       let(:login_user) { user_a }
 
@@ -34,6 +34,20 @@ describe 'メモ管理機能', type: :system do
       it 'ユーザーAが作成したメモが表示されない' do
         #ユーザーAが作成したメモの対象が画面上に表示されていない
         expect(page).to have_no_content '最初のメモ'
+      end
+    end
+  end
+
+  describe '詳細表示機能' do
+    context 'ユーザーAがログインしているとき' do
+      let(:login_user) { user_a }
+
+      before do
+        visit memo_path (memo_a)
+      end
+
+      it 'ユーザーAが作成したメモが表示される' do
+        expect(page).to have_content '最初のメモ'
       end
     end
   end
